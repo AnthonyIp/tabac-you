@@ -131,6 +131,7 @@ const Index = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//maps.google.com" />
         <link rel="dns-prefetch" href="//g.page" />
+        <link rel="dns-prefetch" href="//tile.openstreetmap.org" />
       </Helmet>
       
       {/* Page Content */}

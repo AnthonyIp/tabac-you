@@ -31,12 +31,13 @@ const Hero = ({ hero }: HeroProps) => {
     >
       {/* Background Image with Parallax */}
       <motion.div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 will-change-transform"
         style={{
           backgroundImage: `url(${hero.image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed"
+          backgroundAttachment: "fixed",
+          transform: "translateZ(0)"
         }}
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
@@ -44,8 +45,8 @@ const Hero = ({ hero }: HeroProps) => {
         aria-hidden="true"
       />
       
-      {/* Preload critical image */}
-      <link rel="preload" as="image" href={hero.image} />
+      {/* Preload critical image with high priority */}
+      <link rel="preload" as="image" href={hero.image} fetchPriority="high" />
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-hero z-10" aria-hidden="true" />
