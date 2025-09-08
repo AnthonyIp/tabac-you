@@ -1,0 +1,189 @@
+{
+  "brand": {
+    "name": "Tabac Presse FDJ Les Allumettes",
+    "slogan": "Au cœur de Vert-le-Petit",
+    "logoLight": "/images/logo-light.svg",
+    "logoDark": "/images/logo-dark.svg"
+  },
+  "hero": {
+    "title": "Tabac Presse FDJ Les Allumettes",
+    "subtitle": "Jeux FDJ, presse locale et tabac au cœur de la campagne essonnienne",
+    "image": "/images/hero-facade.jpg",
+    "ctas": [
+      {"label": "Voir l'itinéraire", "href": "#access", "primary": true},
+      {"label": "Découvrir nos services", "href": "#services", "primary": false}
+    ]
+  },
+  "highlights": [
+    {
+      "icon": "🎰",
+      "title": "Jeux FDJ",
+      "text": "Loto, Euromillions, Illiko et tous vos jeux favoris"
+    },
+    {
+      "icon": "📰",
+      "title": "Presse locale",
+      "text": "Journaux nationaux et magazines spécialisés"
+    },
+    {
+      "icon": "🤝",
+      "title": "Accueil chaleureux",
+      "text": "Proximité, conseils et service personnalisé"
+    },
+    {
+      "icon": "🌱",
+      "title": "Commerce de proximité",
+      "text": "Au service de Vert-le-Petit depuis des années"
+    }
+  ],
+  "services": [
+    {
+      "title": "Jeux FDJ",
+      "desc": "Grilles de Loto, Euromillions, jeux à gratter Illiko et bien plus encore",
+      "image": "/images/fdj-service.jpg",
+      "features": ["Loto & Euromillions", "Jeux Illiko", "Keno", "Rapido"]
+    },
+    {
+      "title": "Presse",
+      "desc": "Large sélection de journaux quotidiens et magazines spécialisés",
+      "image": "/images/presse-service.jpg",
+      "features": ["Quotidiens nationaux", "Magazines", "Presse locale", "Publications spécialisées"]
+    },
+    {
+      "title": "Tabac",
+      "desc": "Produits de tabac traditionnels et accessoires de qualité",
+      "image": "/images/tabac-service.jpg",
+      "features": ["Cigarettes", "Cigares", "Tabac à rouler", "Accessoires"]
+    }
+  ],
+  "news": [
+    {
+      "title": "Nouveau jeu à gratter Millionnaire",
+      "date": "2025-09-01",
+      "text": "Découvrez le nouveau jeu Illiko avec des gains jusqu'à 1 million d'euros ! Tentez votre chance dès maintenant.",
+      "description": "Le nouveau jeu Millionnaire d'Illiko arrive chez Les Allumettes ! Avec des gains exceptionnels pouvant atteindre 1 million d'euros, ce jeu à gratter promet des moments d'excitation intense. Disponible en plusieurs prix (2€, 5€, 10€), il s'adapte à tous les budgets. Venez découvrir ce nouveau jeu et tentez votre chance pour devenir millionnaire ! Notre équipe vous accueille avec plaisir pour vous expliquer les règles et vous accompagner dans votre découverte.",
+      "image": "/images/news-millionaire.jpg",
+      "category": "FDJ"
+    },
+    {
+      "title": "Horaires d'été étendus",
+      "date": "2025-08-28",
+      "text": "Pour mieux vous servir cet été, nous étendons nos horaires d'ouverture le samedi jusqu'à 20h.",
+      "description": "Afin de mieux répondre à vos besoins pendant la période estivale, nous avons décidé d'étendre nos horaires d'ouverture. Le samedi, nous restons désormais ouverts jusqu'à 20h00, vous permettant de faire vos achats en toute tranquillité après une journée de travail ou de détente. Ces nouveaux horaires s'appliquent tout l'été et nous espérons que cette initiative vous facilitera la vie. N'hésitez pas à nous faire part de vos retours !",
+      "image": "/images/news-horaires.jpg",
+      "category": "Actualité"
+    },
+    {
+      "title": "Nouvelle sélection magazines",
+      "date": "2025-08-25",
+      "text": "Découvrez notre nouvelle gamme de magazines spécialisés : cuisine, jardinage, décoration et bien-être.",
+      "description": "Nous avons enrichi notre rayon presse avec une sélection soigneusement choisie de magazines spécialisés. Que vous soyez passionné de cuisine, de jardinage, de décoration ou de bien-être, vous trouverez votre bonheur dans notre nouvelle gamme. Des titres reconnus comme Cuisine Actuelle, Rustica, Maison & Travaux, ou encore Psychologies viennent compléter notre offre. Ces magazines sont disponibles dès leur sortie et nous nous efforçons de maintenir un stock régulier pour satisfaire tous nos clients.",
+      "image": "/images/news-magazines.jpg",
+      "category": "Presse"
+    }
+  ],
+  "gallery": [
+    {"src": "/images/interior-counter.jpg", "alt": "Comptoir principal avec jeux FDJ"},
+    {"src": "/images/interior-press.jpg", "alt": "Rayon presse et magazines"},
+    {"src": "/images/interior-tobacco.jpg", "alt": "Espace tabac et accessoires"},
+    {"src": "/images/exterior-facade.jpg", "alt": "Façade du magasin Les Allumettes"},
+    {"src": "/images/exterior-entrance.jpg", "alt": "Entrée accueillante du commerce"},
+    {"src": "/images/interior-welcome.jpg", "alt": "Espace d'accueil chaleureux"}
+  ],
+  "reviews": [
+    {
+      "name": "Béatrice L.",
+      "rating": 5,
+      "comment": "Accueil sympathique boutique très propre c'est agréable je conseille",
+      "date": "2025-08-20",
+      "isLocalGuide": false,
+      "reviewCount": 10
+    },
+    {
+      "name": "Ambre P.",
+      "rating": 5,
+      "comment": "L'accueil est si agréable !!! Ils vous accueille avec un sourire sincères et communicatif! Bon même si c est pour acheter des cigarettes, ils sont très agréables, j espère qu il vont rester longtemps! Et en plus les horaires sont idéales pour ceux qui travaille tard!",
+      "date": "2022-07-15",
+      "isLocalGuide": false,
+      "reviewCount": 6
+    },
+    {
+      "name": "Karen Z",
+      "rating": 5,
+      "comment": "A chaque fois que je rentre dans leur magasin je me sent bien, les propriétaires sont tellement agréables et toujours souriant c'est un vrai plaisir. Merci à eux pour leur accueil parfait et la boutique est accueillante aussi.",
+      "date": "2022-11-10",
+      "isLocalGuide": true,
+      "reviewCount": 22,
+      "photoCount": 1
+    },
+    {
+      "name": "Isa C.",
+      "rating": 5,
+      "comment": "Merci pour votre accueil chaleureux votre gentillesse Établissement avec un large choix",
+      "date": "2025-04-15",
+      "isLocalGuide": true,
+      "reviewCount": 185,
+      "photoCount": 89
+    },
+    {
+      "name": "Marwan Y.",
+      "rating": 5,
+      "comment": "Très bonne accueil et les nouvelle horaires sont juste magnifique ouvert le dimanche et en plus de sa l'es. propriétaire sont tellement gentil je le conseil fortement",
+      "date": "2022-06-20",
+      "isLocalGuide": false,
+      "reviewCount": 3
+    },
+    {
+      "name": "Swan B.",
+      "rating": 5,
+      "comment": "Un tabac qui a était repris avec beaucoup énergies et d'envies! Un accueil impeccable! Toujours content d'y passer surtout que les horaires son très arrangeant! Merci à vous!",
+      "date": "2022-06-15",
+      "isLocalGuide": false,
+      "reviewCount": 8
+    },
+    {
+      "name": "Anoushka",
+      "rating": 5,
+      "comment": "Les personnes qui y travaillent sont absolument adorables. Ils sont serviables aimables et toujours souriant. Et gros point fort ils sont ouverts 7j/7",
+      "date": "2023-01-10",
+      "isLocalGuide": true,
+      "reviewCount": 145,
+      "photoCount": 21
+    }
+  ],
+  "access": {
+    "address": "4 Rue du Général Leclerc, 91710 Vert-le-Petit",
+    "phone": "01 64 93 73 98",
+    "email": "contact@lesallumettes-vert.fr",
+    "hours": [
+      {"day": "Lundi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false},
+      {"day": "Mardi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false},
+      {"day": "Mercredi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false},
+      {"day": "Jeudi", "hours": "Fermé", "today": false},
+      {"day": "Vendredi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false},
+      {"day": "Samedi", "hours": "8h00 - 13h30 et 15h00 - 19h00", "today": false},
+      {"day": "Dimanche", "hours": "8h00 - 13h00", "today": false}
+    ],
+    "map": {
+      "lat": 48.5512429,
+      "lng": 2.3665276,
+      "zoom": 17,
+      "provider": "osm"
+    },
+    "links": {
+      "directions": "https://www.google.com/maps/place/TABAC+PRESSE+FDJ+-+Les+Allumettes/@48.5512464,2.3639527,17z/data=!3m1!4b1!4m6!3m5!1s0x47e5ddc536a9ce31:0x51bf3b389a6bccd5!8m2!3d48.5512429!4d2.3665276!16s%2Fg%2F11q57x4s3c",
+      "call": "tel:+33164937398",
+      "gmb": "https://www.google.com/search?q=les+allumettes+vert+le+petit",
+      "instagram": "https://www.instagram.com/lesallumettes.vertlepetit/"
+    }
+  },
+  "footer": {
+    "legal": "© 2025 Les Allumettes - Tous droits réservés"
+  },
+  "seo": {
+    "title": "Tabac Presse FDJ Les Allumettes - Vert-le-Petit (91710)",
+    "description": "Votre tabac-presse FDJ à Vert-le-Petit. Jeux FDJ, presse locale, tabac et accueil chaleureux au cœur de l'Essonne. Ouvert 7j/7.",
+    "keywords": "tabac, presse, FDJ, Vert-le-Petit, Essonne, 91710, jeux, loto, euromillions, journaux",
+    "ogImage": "/images/og-image.jpg"
+  }
+}

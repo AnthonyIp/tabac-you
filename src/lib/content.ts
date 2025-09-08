@@ -111,182 +111,23 @@ export interface ContentData {
   seo: SEO;
 }
 
+// Import du contenu statique - Fichier JSON
+import contentData from '../../public/data/content.json';
+
 // Content loader
 export async function loadContent(): Promise<ContentData> {
   try {
-    console.log('🔄 Attempting to load content from /data/content.json...');
-    // Essayer de charger le fichier JSON
-    const response = await fetch('/data/content.json');
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-    const data = await response.json();
-    console.log('✅ Content loaded successfully from JSON file');
+    console.log('✅ Using bundled content data from JSON file');
     console.log('📊 Data preview:', {
-      brand: data.brand?.name,
-      hero: data.hero?.title,
-      services: data.services?.length,
-      reviews: data.reviews?.length
+      brand: contentData.brand?.name,
+      hero: contentData.hero?.title,
+      services: contentData.services?.length,
+      reviews: contentData.reviews?.length
     });
-    return data as ContentData;
+    return contentData as ContentData;
   } catch (error) {
-    console.error('❌ Error loading content:', error);
-    console.log('🔄 Using fallback data instead...');
-    // Retourner des données par défaut en cas d'erreur
-    const fallbackData = {
-      brand: {
-        name: "Tabac Presse FDJ Les Allumettes",
-        slogan: "Au cœur de Vert-le-Petit",
-        logoLight: "/images/logo-light.svg",
-        logoDark: "/images/logo-dark.svg"
-      },
-      hero: {
-        title: "Tabac Presse FDJ Les Allumettes",
-        subtitle: "Jeux FDJ, presse locale et tabac au cœur de la campagne essonnienne",
-        image: "/images/hero-facade.jpg",
-        ctas: [
-          { "label": "Voir l'itinéraire", "href": "#access", "primary": true },
-          { "label": "Découvrir nos services", "href": "#services", "primary": false }
-        ]
-      },
-      highlights: [
-        { 
-          "icon": "🎰", 
-          "title": "Jeux FDJ", 
-          "description": "Loto, Euromillions, Keno et tous vos jeux préférés"
-        },
-        { 
-          "icon": "📰", 
-          "title": "Presse locale", 
-          "description": "Journaux, magazines et actualités de la région"
-        },
-        { 
-          "icon": "🚬", 
-          "title": "Tabac", 
-          "description": "Cigarettes, tabac à rouler et accessoires"
-        }
-      ],
-      services: [
-        {
-          "id": "fdj",
-          "title": "Jeux FDJ",
-          "description": "Loto, Euromillions, Keno, Amigo, Cash, 4/20, 5/34, 6/49, 7/39, 8/20, 9/39, 10/20, 11/20, 12/20, 13/20, 14/20, 15/20, 16/20, 17/20, 18/20, 19/20, 20/20",
-          "icon": "🎰",
-          "image": "/images/fdj-service.jpg",
-          "features": [
-            "Loto et Euromillions",
-            "Keno et Amigo",
-            "Jeux de grattage",
-            "Paiement sécurisé"
-          ]
-        },
-        {
-          "id": "presse",
-          "title": "Presse & Magazines",
-          "description": "Journaux locaux, nationaux et magazines spécialisés",
-          "icon": "📰",
-          "image": "/images/presse-service.jpg",
-          "features": [
-            "Journaux quotidiens",
-            "Magazines spécialisés",
-            "Presse locale",
-            "Abonnements"
-          ]
-        },
-        {
-          "id": "tabac",
-          "title": "Tabac & Accessoires",
-          "description": "Cigarettes, tabac à rouler et tous les accessoires",
-          "icon": "🚬",
-          "image": "/images/tabac-service.jpg",
-          "features": [
-            "Cigarettes",
-            "Tabac à rouler",
-            "Papiers et filtres",
-            "Accessoires"
-          ]
-        }
-      ],
-      gallery: [
-        {
-          "id": "exterior",
-          "title": "Façade du magasin",
-          "image": "/images/exterior-facade.jpg",
-          "alt": "Façade du Tabac Presse FDJ Les Allumettes"
-        },
-        {
-          "id": "interior",
-          "title": "Intérieur du magasin",
-          "image": "/images/interior-counter.jpg",
-          "alt": "Comptoir du magasin"
-        }
-      ],
-      news: [
-        {
-          "id": "horaires",
-          "title": "Nouveaux horaires",
-          "date": "2024-01-15",
-          "category": "Actualité",
-          "image": "/images/news-horaires.jpg",
-          "text": "Découvrez nos nouveaux horaires d'ouverture",
-          "description": "Nous avons mis à jour nos horaires pour mieux vous servir. Ouvert du lundi au samedi de 8h à 19h, fermé le jeudi, et le dimanche de 9h à 13h."
-        }
-      ],
-      reviews: [
-        {
-          "id": "review1",
-          "name": "Marie L.",
-          "rating": 5,
-          "text": "Excellent service, très accueillant !",
-          "date": "2024-01-10",
-          "isLocalGuide": true,
-          "reviewCount": 12,
-          "photoCount": 3
-        }
-      ],
-      access: {
-        address: "4 Rue du Général Leclerc, 91710 Vert-le-Petit",
-        phone: "01 64 93 73 98",
-        hours: [
-          { "day": "Lundi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
-          { "day": "Mardi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
-          { "day": "Mercredi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
-          { "day": "Jeudi", "hours": "Fermé", "today": false },
-          { "day": "Vendredi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
-          { "day": "Samedi", "hours": "8h00 - 13h30 et 15h00 - 19h00", "today": false },
-          { "day": "Dimanche", "hours": "8h00 - 13h00", "today": false }
-        ],
-        links: {
-          directions: "https://www.google.com/maps/dir//4+Rue+du+Général+Leclerc,+91710+Vert-le-Petit",
-          call: "tel:0164937398",
-          gmb: "https://maps.app.goo.gl/example",
-          instagram: "https://www.instagram.com/lesallumettes.vertlepetit/"
-        },
-        map: {
-          lat: 48.5512429,
-          lng: 2.3665276,
-          zoom: 17
-        }
-      },
-      footer: {
-        legal: "© 2025 Les Allumettes - Tous droits réservés"
-      },
-      seo: {
-        title: "Tabac Presse FDJ Les Allumettes - Vert-le-Petit (91710)",
-        description: "Votre tabac-presse FDJ à Vert-le-Petit. Jeux FDJ, presse locale, tabac et accueil chaleureux au cœur de l'Essonne. Ouvert 7j/7.",
-        keywords: "tabac, presse, FDJ, Vert-le-Petit, Essonne, 91710, jeux, loto, euromillions, journaux",
-        ogImage: "/images/og-image.jpg"
-      }
-    };
-    
-    console.log('⚠️ Using FALLBACK data - JSON file not loaded');
-    console.log('📊 Fallback data preview:', {
-      brand: fallbackData.brand?.name,
-      hero: fallbackData.hero?.title,
-      services: fallbackData.services?.length,
-      reviews: fallbackData.reviews?.length
-    });
-    return fallbackData;
+    console.error('❌ Critical error: Content data not available:', error);
+    throw new Error('Content data is required but not available. Please check the build configuration.');
   }
 }
 

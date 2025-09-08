@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lesallumettes-vert.fr/sitemap.xml
+
+# Optimisations SEO
+Crawl-delay: 1
