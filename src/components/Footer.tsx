@@ -136,7 +136,7 @@ const Footer = ({ footer, access }: FooterProps) => {
                   Carte : © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">OpenStreetMap</a> contributors
                 </p>
                 <p className="text-xs text-muted-foreground/60 mt-1">
-                  Développé par <span className="font-medium text-primary">Anthony Ip</span>
+                  Développé par <a href="https://anthonyip.fr" target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">Anthony Ip</a>
                 </p>
               </div>
               
