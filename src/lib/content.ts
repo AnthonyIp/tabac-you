@@ -111,18 +111,20 @@ export interface ContentData {
   seo: SEO;
 }
 
-// Import statique du contenu
-import contentData from '../../public/data/content.json';
-
 // Content loader
 export async function loadContent(): Promise<ContentData> {
   try {
-    // Utiliser les données importées directement
-    console.log('Using imported content data');
-    return contentData as ContentData;
+    // Essayer de charger le fichier JSON
+    const response = await fetch('/data/content.json');
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    const data = await response.json();
+    console.log('Content loaded successfully from JSON file');
+    return data as ContentData;
   } catch (error) {
     console.error('Error loading content:', error);
-    console.log('Using fallback data');
+    console.log('Using fallback data instead');
     // Retourner des données par défaut en cas d'erreur
     return {
       brand: {
