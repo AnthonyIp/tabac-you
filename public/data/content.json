@@ -183,7 +183,9 @@
   "seo": {
     "title": "Tabac Presse FDJ Les Allumettes - Vert-le-Petit (91710)",
     "description": "Votre tabac-presse FDJ à Vert-le-Petit. Jeux FDJ, presse locale, tabac et accueil chaleureux au cœur de l'Essonne. Ouvert 7j/7.",
-    "keywords": "tabac, presse, FDJ, Vert-le-Petit, Essonne, 91710, jeux, loto, euromillions, journaux",
-    "ogImage": "/images/og-image.jpg"
+    "keywords": "tabac, presse, FDJ, Vert-le-Petit, Essonne, 91710, jeux, loto, euromillions, journaux, les allumettes",
+    "ogImage": "/images/og-image.jpg",
+    "url": "https://les-allumettes.netlify.app",
+    "siteName": "Les Allumettes - Tabac Presse FDJ"
   }
 }

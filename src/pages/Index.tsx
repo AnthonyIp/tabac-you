@@ -88,7 +88,7 @@ const Index = () => {
       "longitude": content.access.map.lng
     },
     "telephone": content.access.phone,
-    "url": window.location.origin,
+    "url": content.seo.url || "https://les-allumettes.netlify.app",
     "sameAs": [content.access.links.gmb],
     "openingHours": content.access.hours.map(h => `${h.day} ${h.hours}`),
     "priceRange": "€",
@@ -104,21 +104,22 @@ const Index = () => {
         <meta name="description" content={content.seo.description} />
         <meta name="keywords" content={content.seo.keywords} />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://lesallumettes-vert.fr" />
+        <link rel="canonical" href={content.seo.url || "https://les-allumettes.netlify.app"} />
         
         {/* Open Graph */}
         <meta property="og:title" content={content.seo.title} />
         <meta property="og:description" content={content.seo.description} />
-        <meta property="og:image" content={`https://lesallumettes-vert.fr${content.seo.ogImage}`} />
-        <meta property="og:url" content="https://lesallumettes-vert.fr" />
+        <meta property="og:image" content={`${content.seo.url || "https://les-allumettes.netlify.app"}${content.seo.ogImage}`} />
+        <meta property="og:url" content={content.seo.url || "https://les-allumettes.netlify.app"} />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={content.seo.siteName || "Les Allumettes - Tabac Presse FDJ"} />
         <meta property="og:locale" content="fr_FR" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={content.seo.title} />
         <meta name="twitter:description" content={content.seo.description} />
-        <meta name="twitter:image" content={`https://lesallumettes-vert.fr${content.seo.ogImage}`} />
+        <meta name="twitter:image" content={`${content.seo.url || "https://les-allumettes.netlify.app"}${content.seo.ogImage}`} />
         
         {/* Structured Data */}
         <script type="application/ld+json">

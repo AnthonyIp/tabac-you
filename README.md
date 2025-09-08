@@ -17,22 +17,31 @@ Site web moderne et responsive pour le Tabac Presse FDJ Les Allumettes à Vert-l
 
 ## 🚀 Déploiement sur Netlify
 
-### Méthode 1 : Déploiement automatique (Recommandé)
+### ✅ Site déployé et en ligne
 
-1. **Connecter le repository** à Netlify
-2. **Configuration automatique** :
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - Node version: `18`
+**URL du site :** [https://les-allumettes.netlify.app](https://les-allumettes.netlify.app)
 
-### Méthode 2 : Déploiement manuel
+### Configuration Netlify
 
-1. **Build local** :
-   ```bash
-   npm run build
-   ```
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+- **Node version:** `18`
+- **Déploiement automatique** : Connecté au repository GitHub
+- **Redirections** : Configurées dans `public/_redirects`
+- **Headers** : Optimisés dans `public/_headers`
 
-2. **Upload du dossier `dist`** sur Netlify
+### Déploiement automatique
+
+Le site se déploie automatiquement à chaque push sur la branche `main` grâce à l'intégration Netlify-GitHub.
+
+### Optimisations Netlify
+
+- **CDN global** : Distribution rapide dans le monde entier
+- **HTTPS automatique** : Certificat SSL Let's Encrypt
+- **Compression Gzip/Brotli** : Réduction de 70% de la taille des fichiers
+- **Cache intelligent** : Mise en cache optimisée des assets statiques
+- **Redirections** : Gestion des redirections 301/302
+- **Headers de sécurité** : Configuration sécurisée des en-têtes HTTP
 
 ## 📁 Structure du Projet
 
@@ -103,7 +112,8 @@ src/
 **Tabac Presse FDJ Les Allumettes**
 - 📍 4 Rue du Général Leclerc, 91710 Vert-le-Petit
 - 📞 01 64 93 73 98
-- 🌐 [Site web](https://lesallumettes-vert.netlify.app)
+- 📧 contact@lesallumettes-vert.fr
+- 🌐 [Site web](https://les-allumettes.netlify.app)
 - 📸 [Instagram](https://www.instagram.com/lesallumettes.vertlepetit/)
 - 🗺️ [Google My Business](https://www.google.com/search?q=les+allumettes+vert+le+petit)
 
@@ -125,10 +135,12 @@ npm run preview
 
 ## 📊 Performance
 
-- **Bundle optimisé** : 370KB (gzippé: 107KB)
+- **Bundle optimisé** : 357KB (gzippé: 104KB)
 - **Chargement rapide** : < 3s sur 3G
 - **SEO score** : 95+ sur Lighthouse
 - **Accessibilité** : WCAG 2.1 AA
+- **Core Web Vitals** : Optimisés pour Netlify
+- **CDN** : Distribution mondiale via Netlify
 
 ## 📄 Licence
 

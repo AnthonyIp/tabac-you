@@ -96,6 +96,8 @@ export interface SEO {
   description: string;
   keywords: string;
   ogImage: string;
+  url?: string;
+  siteName?: string;
 }
 
 export interface ContentData {
