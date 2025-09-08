@@ -8,7 +8,7 @@ interface HeroProps {
   links: Links;
 }
 
-const Hero = ({ hero, links }: HeroProps) => {
+const Hero = ({ hero }: HeroProps) => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {

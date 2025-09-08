@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Star, ExternalLink } from "lucide-react";
-import { formatRating, formatDate } from "@/lib/content";
+import { formatDate } from "@/lib/content";
 import type { Review } from "@/lib/content";
 
 interface ReviewsProps {

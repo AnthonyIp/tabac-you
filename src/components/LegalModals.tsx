@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { FileText, Shield } from "lucide-react";
@@ -48,14 +47,24 @@ const LegalModals = () => {
             <section>
               <h3 className="text-lg font-semibold text-foreground mb-3">3. Hébergement</h3>
               <div className="bg-muted/50 p-4 rounded-lg">
-                <p><strong>Hébergeur :</strong> [Nom de votre hébergeur]</p>
-                <p><strong>Adresse :</strong> [Adresse de l'hébergeur]</p>
-                <p><strong>Téléphone :</strong> [Téléphone de l'hébergeur]</p>
+                <p><strong>Hébergeur :</strong> Netlify, Inc.</p>
+                <p><strong>Adresse :</strong> 44 Montgomery St., Suite 300, San Francisco, CA 94104, États-Unis</p>
+                <p><strong>Téléphone :</strong> +1 415-691-1573</p>
+                <p><strong>Email :</strong> support@netlify.com</p>
+                <p><strong>Site web :</strong> <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.netlify.com</a></p>
               </div>
             </section>
 
             <section>
-              <h3 className="text-lg font-semibold text-foreground mb-3">4. Propriété intellectuelle</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-3">4. Développement du site</h3>
+              <div className="bg-muted/50 p-4 rounded-lg">
+                <p><strong>Développeur :</strong> Anthony IP</p>
+                <p><strong>Site web :</strong> <a href="https://anthonyip.fr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">anthonyip.fr</a></p>
+              </div>
+            </section>
+
+            <section>
+              <h3 className="text-lg font-semibold text-foreground mb-3">5. Propriété intellectuelle</h3>
               <p>
                 L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur 
                 et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour 
@@ -68,7 +77,7 @@ const LegalModals = () => {
             </section>
 
             <section>
-              <h3 className="text-lg font-semibold text-foreground mb-3">5. Responsabilité</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-3">6. Responsabilité</h3>
               <p>
                 Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour 
                 à différentes périodes de l'année, mais peut toutefois contenir des inexactitudes ou des omissions.

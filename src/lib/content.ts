@@ -121,7 +121,45 @@ export async function loadContent(): Promise<ContentData> {
     return await response.json();
   } catch (error) {
     console.error('Error loading content:', error);
-    throw error;
+    // Retourner des données par défaut en cas d'erreur
+    return {
+      brand: {
+        name: "Les Allumettes",
+        slogan: "Votre presse de proximité"
+      },
+      hero: {
+        title: "Bienvenue chez Les Allumettes",
+        subtitle: "Votre presse de proximité à Vert-le-Petit",
+        image: "/images/hero-facade.jpg",
+        cta: {
+          text: "Découvrir nos services",
+          href: "#services"
+        }
+      },
+      services: [],
+      gallery: [],
+      news: [],
+      reviews: [],
+      access: {
+        address: "4 Rue du Général Leclerc, 91710 Vert-le-Petit",
+        phone: "01 64 93 73 98",
+        hours: "Lun-Mer-Ven-Sam: 8h-19h, Jeu: Fermé, Dim: 9h-13h",
+        links: {
+          directions: "",
+          call: "",
+          gmb: "",
+          instagram: ""
+        },
+        map: {
+          lat: 48.5512429,
+          lng: 2.3665276,
+          zoom: 17
+        }
+      },
+      footer: {
+        legal: "© 2024 Les Allumettes. Tous droits réservés."
+      }
+    };
   }
 }
 
