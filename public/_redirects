@@ -1,0 +1,9 @@
+# Redirections pour SEO et SPA
+# Redirection de l'ancien domaine vers le nouveau
+https://lesallumettes-vert.fr/* https://les-allumettes.netlify.app/:splat 301!
+
+# Redirection www vers non-www
+https://www.les-allumettes.netlify.app/* https://les-allumettes.netlify.app/:splat 301!
+
+# Redirection des pages sans slash vers avec slash
+/* /index.html 200

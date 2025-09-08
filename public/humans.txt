@@ -1,0 +1,35 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Développeur: Anthony Ip
+    Site: https://anthonyip.fr
+    Contact: contact@anthonyip.fr
+    Twitter: @anthonyip_dev
+
+# THANKS
+
+    Client: Les Allumettes - Tabac Presse FDJ
+    Adresse: 4 Rue du Général Leclerc, 91710 Vert-le-Petit
+    Site: https://les-allumettes.netlify.app
+
+# TECHNOLOGY COLOPHON
+
+    Standards: HTML5, CSS3, ES6+
+    Framework: React 18, TypeScript
+    Styling: Tailwind CSS, Framer Motion
+    Build: Vite, SWC, Terser
+    Icons: Lucide React
+    Maps: Leaflet, OpenStreetMap
+    Hosting: Netlify
+    CDN: Netlify Edge
+    Performance: Lighthouse 95+
+
+# SITE
+
+    Last update: 2025/01/09
+    Language: French
+    Doctype: HTML5
+    IDE: Cursor
+    SEO: Optimisé pour Google, Bing

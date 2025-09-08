@@ -23,7 +23,9 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           framer: ['framer-motion'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-slot', '@radix-ui/react-toast', '@radix-ui/react-tooltip']
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-slot', '@radix-ui/react-tooltip'],
+          router: ['react-router-dom'],
+          helmet: ['react-helmet-async']
         }
       }
     },
@@ -33,9 +35,13 @@ export default defineConfig(({ mode }) => ({
     terserOptions: {
       compress: {
         drop_console: mode === 'production',
-        drop_debugger: mode === 'production'
+        drop_debugger: mode === 'production',
+        pure_funcs: mode === 'production' ? ['console.log', 'console.info'] : []
       }
-    }
+    },
+    // Optimisations supplémentaires
+    chunkSizeWarningLimit: 1000,
+    target: 'esnext'
   },
   // Optimisations de développement
   optimizeDeps: {
