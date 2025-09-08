@@ -114,19 +114,26 @@ export interface ContentData {
 // Content loader
 export async function loadContent(): Promise<ContentData> {
   try {
+    console.log('🔄 Attempting to load content from /data/content.json...');
     // Essayer de charger le fichier JSON
     const response = await fetch('/data/content.json');
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
     const data = await response.json();
-    console.log('Content loaded successfully from JSON file');
+    console.log('✅ Content loaded successfully from JSON file');
+    console.log('📊 Data preview:', {
+      brand: data.brand?.name,
+      hero: data.hero?.title,
+      services: data.services?.length,
+      reviews: data.reviews?.length
+    });
     return data as ContentData;
   } catch (error) {
-    console.error('Error loading content:', error);
-    console.log('Using fallback data instead');
+    console.error('❌ Error loading content:', error);
+    console.log('🔄 Using fallback data instead...');
     // Retourner des données par défaut en cas d'erreur
-    return {
+    const fallbackData = {
       brand: {
         name: "Tabac Presse FDJ Les Allumettes",
         slogan: "Au cœur de Vert-le-Petit",
@@ -271,6 +278,15 @@ export async function loadContent(): Promise<ContentData> {
         ogImage: "/images/og-image.jpg"
       }
     };
+    
+    console.log('⚠️ Using FALLBACK data - JSON file not loaded');
+    console.log('📊 Fallback data preview:', {
+      brand: fallbackData.brand?.name,
+      hero: fallbackData.hero?.title,
+      services: fallbackData.services?.length,
+      reviews: fallbackData.reviews?.length
+    });
+    return fallbackData;
   }
 }
 
