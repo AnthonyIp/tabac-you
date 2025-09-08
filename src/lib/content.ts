@@ -158,6 +158,12 @@ export async function loadContent(): Promise<ContentData> {
       },
       footer: {
         legal: "© 2024 Les Allumettes. Tous droits réservés."
+      },
+      seo: {
+        title: "Les Allumettes - Tabac Presse FDJ",
+        description: "Votre tabac-presse FDJ à Vert-le-Petit",
+        keywords: "tabac, presse, FDJ, Vert-le-Petit",
+        ogImage: "/images/og-image.jpg"
       }
     };
   }
