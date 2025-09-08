@@ -236,7 +236,15 @@ export async function loadContent(): Promise<ContentData> {
       access: {
         address: "4 Rue du Général Leclerc, 91710 Vert-le-Petit",
         phone: "01 64 93 73 98",
-        hours: "Lun-Mer-Ven-Sam: 8h-19h, Jeu: Fermé, Dim: 9h-13h",
+        hours: [
+          { "day": "Lundi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
+          { "day": "Mardi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
+          { "day": "Mercredi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
+          { "day": "Jeudi", "hours": "Fermé", "today": false },
+          { "day": "Vendredi", "hours": "7h00 - 13h30 et 15h00 - 19h00", "today": false },
+          { "day": "Samedi", "hours": "8h00 - 13h30 et 15h00 - 19h00", "today": false },
+          { "day": "Dimanche", "hours": "8h00 - 13h00", "today": false }
+        ],
         links: {
           directions: "https://www.google.com/maps/dir//4+Rue+du+Général+Leclerc,+91710+Vert-le-Petit",
           call: "tel:0164937398",
