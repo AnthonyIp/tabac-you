@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { loadContent, type ContentData } from "@/lib/content";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 // Components
 import Header from "@/components/Header";
@@ -18,6 +19,9 @@ const Index = () => {
   const [content, setContent] = useState<ContentData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Enable smooth scroll globally
+  useSmoothScroll({ duration: 800 });
 
   useEffect(() => {
     const loadData = async () => {
@@ -139,7 +143,8 @@ const Index = () => {
         {/* Header */}
         <Header 
           brand={content.brand} 
-          links={content.access.links} 
+          links={content.access.links}
+          navigation={content.navigation}
         />
 
         {/* Main Content */}
@@ -151,25 +156,42 @@ const Index = () => {
           />
 
           {/* Highlights Section */}
-          <Highlights highlights={content.highlights} />
+          <Highlights 
+            highlights={content.highlights} 
+            sections={content.sections}
+          />
 
           {/* Services Section */}
-          <Services services={content.services} />
+          <Services 
+            services={content.services} 
+            sections={content.sections}
+          />
 
           {/* News Section */}
-          <News news={content.news} />
+          <News 
+            news={content.news} 
+            sections={content.sections}
+            modals={content.modals}
+          />
 
           {/* Gallery Section */}
-          <Gallery gallery={content.gallery} />
+          <Gallery 
+            gallery={content.gallery} 
+            sections={content.sections}
+          />
 
           {/* Reviews Section */}
           <Reviews 
             reviews={content.reviews} 
-            gmbLink={content.access.links.gmb} 
+            gmbLink={content.access.links.gmb}
+            sections={content.sections}
           />
 
           {/* Access & Map Section */}
-          <AccessMap access={content.access} />
+          <AccessMap 
+            access={content.access} 
+            sections={content.sections}
+          />
         </main>
 
         {/* Footer */}

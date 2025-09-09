@@ -5,14 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Eye } from "lucide-react";
 import { formatDate } from "@/lib/content";
-import type { NewsItem } from "@/lib/content";
+import type { NewsItem, Sections, Modals } from "@/lib/content";
 import { NewsModal } from "./NewsModal";
 
 interface NewsProps {
   news: NewsItem[];
+  sections: Sections;
+  modals: Modals;
 }
 
-const News = ({ news }: NewsProps) => {
+const News = ({ news, sections, modals }: NewsProps) => {
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -63,10 +65,10 @@ const News = ({ news }: NewsProps) => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Actualités & Nouveautés
+            {sections.news.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Restez informé de nos dernières nouveautés et événements spéciaux
+            {sections.news.subtitle}
           </p>
         </motion.div>
 
@@ -135,7 +137,7 @@ const News = ({ news }: NewsProps) => {
                       className="w-full hover:bg-primary hover:text-primary-foreground transition-colors group/btn"
                     >
                       <Eye className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                      <span className="text-sm font-medium">Lire la suite</span>
+                      <span className="text-sm font-medium">{sections.news.readMore}</span>
                     </Button>
                   </div>
                 </div>
@@ -150,6 +152,7 @@ const News = ({ news }: NewsProps) => {
         news={selectedNews}
         isOpen={isModalOpen}
         onClose={closeModal}
+        modals={modals}
       />
     </section>
   );

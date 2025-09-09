@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { GalleryItem } from "@/lib/content";
+import Reveal from "./Reveal";
+import type { GalleryItem, Sections } from "@/lib/content";
 
 interface GalleryProps {
   gallery: GalleryItem[];
+  sections: Sections;
 }
 
-const Gallery = ({ gallery }: GalleryProps) => {
+const Gallery = ({ gallery, sections }: GalleryProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -29,73 +33,106 @@ const Gallery = ({ gallery }: GalleryProps) => {
     }
   };
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
+  const scrollToIndex = useCallback((index: number) => {
+    if (!scrollContainerRef.current) return;
+    
+    const container = scrollContainerRef.current;
+    const itemWidth = container.scrollWidth / gallery.length;
+    const scrollLeft = index * itemWidth;
+    
+    container.scrollTo({
+      left: scrollLeft,
+      behavior: 'smooth'
+    });
+    
+    setCurrentIndex(index);
+  }, [gallery.length]);
 
-  const item = {
-    hidden: { opacity: 0, scale: 0.8 },
-    show: { opacity: 1, scale: 1 }
-  };
+  const scrollNext = useCallback(() => {
+    const nextIndex = (currentIndex + 1) % gallery.length;
+    scrollToIndex(nextIndex);
+  }, [currentIndex, gallery.length, scrollToIndex]);
+
+  // Auto-scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      scrollNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [scrollNext]);
 
   return (
     <>
       <section id="gallery" className="py-20 scroll-mt-20">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Ambiance & Boutique
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Découvrez l'intérieur chaleureux de notre commerce et l'atmosphère conviviale qui vous attend
-            </p>
-          </motion.div>
+          <Reveal direction="up" delay={0.2}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                {sections.gallery.title}
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {sections.gallery.subtitle}
+              </p>
+            </div>
+          </Reveal>
 
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            {gallery.map((image, index) => (
-              <motion.div
-                key={index}
-                variants={item}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.3 }
+          {/* Horizontal Carousel */}
+          <Reveal direction="up" delay={0.4}>
+            <div className="relative">
+
+              {/* Scrollable Container */}
+              <div
+                ref={scrollContainerRef}
+                className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
                 }}
-                className="relative aspect-square cursor-pointer group"
-                onClick={() => openLightbox(index)}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover rounded-lg group-hover:shadow-glow transition-all duration-300"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white font-medium">
-                    Agrandir
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                {gallery.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex-shrink-0 w-80 h-64 cursor-pointer group snap-center"
+                    whileHover={{ 
+                      scale: 1.02,
+                      transition: { duration: 0.3 }
+                    }}
+                    onClick={() => openLightbox(index)}
+                  >
+                    <div className="relative w-full h-full rounded-lg overflow-hidden">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white font-medium bg-black/50 px-3 py-1 rounded-full">
+                          {sections.gallery.enlarge}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center mt-6 gap-2">
+                {gallery.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? "bg-primary scale-125"
+                        : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

@@ -4,14 +4,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Star, ExternalLink } from "lucide-react";
 import { formatDate } from "@/lib/content";
-import type { Review } from "@/lib/content";
+import type { Review, Sections } from "@/lib/content";
 
 interface ReviewsProps {
   reviews: Review[];
   gmbLink: string;
+  sections: Sections;
 }
 
-const Reviews = ({ reviews, gmbLink }: ReviewsProps) => {
+const Reviews = ({ reviews, gmbLink, sections }: ReviewsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -54,10 +55,10 @@ const Reviews = ({ reviews, gmbLink }: ReviewsProps) => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ce que disent nos clients
+            {sections.reviews.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Découvrez les témoignages de nos clients fidèles qui font la réputation des Allumettes
+            {sections.reviews.subtitle}
           </p>
         </motion.div>
 
@@ -124,7 +125,7 @@ const Reviews = ({ reviews, gmbLink }: ReviewsProps) => {
                       </cite>
                       {reviews[currentIndex].isLocalGuide && (
                         <span className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
-                          Local Guide
+                          {sections.reviews.localGuide}
                         </span>
                       )}
                     </div>
@@ -134,12 +135,12 @@ const Reviews = ({ reviews, gmbLink }: ReviewsProps) => {
                       </time>
                       {reviews[currentIndex].reviewCount && (
                         <span>
-                          {reviews[currentIndex].reviewCount} avis
+                          {reviews[currentIndex].reviewCount} {sections.reviews.reviewsCount}
                         </span>
                       )}
                       {reviews[currentIndex].photoCount && (
                         <span>
-                          {reviews[currentIndex].photoCount} photos
+                          {reviews[currentIndex].photoCount} {sections.reviews.photosCount}
                         </span>
                       )}
                     </div>
@@ -180,7 +181,7 @@ const Reviews = ({ reviews, gmbLink }: ReviewsProps) => {
             onClick={() => window.open(gmbLink, '_blank')}
           >
             <ExternalLink className="w-5 h-5 mr-2" />
-            Voir tous les avis sur Google
+            {sections.reviews.viewAllReviews}
           </Button>
         </motion.div>
       </div>

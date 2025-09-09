@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, X } from "lucide-react";
-import { NewsItem } from "@/lib/content";
+import { NewsItem, Modals } from "@/lib/content";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 
@@ -9,9 +9,10 @@ interface NewsModalProps {
   news: NewsItem | null;
   isOpen: boolean;
   onClose: () => void;
+  modals: Modals;
 }
 
-export function NewsModal({ news, isOpen, onClose }: NewsModalProps) {
+export function NewsModal({ news, isOpen, onClose, modals }: NewsModalProps) {
   if (!news) return null;
 
   const formatDate = (dateString: string) => {
@@ -57,7 +58,7 @@ export function NewsModal({ news, isOpen, onClose }: NewsModalProps) {
             <button
               onClick={onClose}
               className="ml-4 p-2 hover:bg-muted rounded-full transition-colors"
-              aria-label="Fermer"
+              aria-label={modals.news.close}
             >
               <X className="h-5 w-5" />
             </button>
@@ -85,7 +86,7 @@ export function NewsModal({ news, isOpen, onClose }: NewsModalProps) {
           {/* Description détaillée */}
           <div className="space-y-3">
             <h3 className="text-lg font-semibold text-foreground">
-              Détails
+              {modals.news.details}
             </h3>
             <div className="prose prose-sm max-w-none dark:prose-invert">
               <p className="text-foreground/80 leading-relaxed whitespace-pre-line">
@@ -97,7 +98,7 @@ export function NewsModal({ news, isOpen, onClose }: NewsModalProps) {
           {/* Call to action */}
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
             <p className="text-sm text-foreground/80 text-center">
-              💡 <strong>Intéressé(e) ?</strong> Passez nous voir au magasin pour en savoir plus !
+              💡 <strong>{modals.news.interested}</strong>
             </p>
           </div>
         </div>

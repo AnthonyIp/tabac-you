@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useParallax } from "@/hooks/use-parallax";
 import type { Hero as HeroType, Links } from "@/lib/content";
 
 interface HeroProps {
@@ -9,6 +10,8 @@ interface HeroProps {
 }
 
 const Hero = ({ hero }: HeroProps) => {
+  const parallaxRef = useParallax({ speed: 0.5, direction: 'up' });
+  
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -31,12 +34,12 @@ const Hero = ({ hero }: HeroProps) => {
     >
       {/* Background Image with Parallax */}
       <motion.div
+        ref={parallaxRef}
         className="absolute inset-0 z-0 will-change-transform"
         style={{
           backgroundImage: `url(${hero.image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
           transform: "translateZ(0)"
         }}
         initial={{ scale: 1.1 }}
@@ -46,7 +49,7 @@ const Hero = ({ hero }: HeroProps) => {
       />
       
       {/* Preload critical image with high priority */}
-      <link rel="preload" as="image" href={hero.image} fetchPriority="high" />
+      <link rel="preload" as="image" href={hero.image} fetchpriority="high" />
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-hero z-10" aria-hidden="true" />

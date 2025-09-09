@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle } from "lucide-react";
-import type { Service } from "@/lib/content";
+import type { Service, Sections } from "@/lib/content";
 
 interface ServicesProps {
   services: Service[];
+  sections: Sections;
 }
 
-const Services = ({ services }: ServicesProps) => {
+const Services = ({ services, sections }: ServicesProps) => {
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -40,10 +41,10 @@ const Services = ({ services }: ServicesProps) => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Nos Services
+            {sections.services.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Une gamme complète de services pour répondre à tous vos besoins quotidiens
+            {sections.services.subtitle}
           </p>
         </motion.div>
 
@@ -83,7 +84,7 @@ const Services = ({ services }: ServicesProps) => {
                     transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
                   >
                     <Badge variant="secondary" className="bg-primary text-primary-foreground">
-                      Service
+                      {sections.services.serviceBadge}
                     </Badge>
                   </motion.div>
                 </div>

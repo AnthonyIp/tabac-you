@@ -3,14 +3,15 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Clock, Navigation, ChevronDown, ChevronUp } from "lucide-react";
-import type { Access } from "@/lib/content";
+import type { Access, Sections } from "@/lib/content";
 import { LeafletMap } from "./LeafletMap";
 
 interface AccessMapProps {
   access: Access;
+  sections: Sections;
 }
 
-const AccessMap = ({ access }: AccessMapProps) => {
+const AccessMap = ({ access, sections }: AccessMapProps) => {
   const [isMapExpanded, setIsMapExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -44,10 +45,10 @@ const AccessMap = ({ access }: AccessMapProps) => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Accès & Horaires
+            {sections.access.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Trouvez-nous facilement au cœur de Vert-le-Petit, nous vous accueillons tous les jours
+            {sections.access.subtitle}
           </p>
         </motion.div>
 
@@ -66,7 +67,7 @@ const AccessMap = ({ access }: AccessMapProps) => {
                   <div className="flex items-center space-x-3">
                     <MapPin className="w-6 h-6" />
                     <div>
-                      <h3 className="text-xl font-semibold">Notre localisation</h3>
+                      <h3 className="text-xl font-semibold">{sections.access.location}</h3>
                       <p className="text-primary-foreground/90 text-sm">{access.address}</p>
                     </div>
                   </div>
@@ -99,7 +100,7 @@ const AccessMap = ({ access }: AccessMapProps) => {
                   onClick={() => window.open(access.links.directions, '_blank')}
                 >
                   <Navigation className="w-4 h-4 mr-2" />
-                  Itinéraire
+                  {sections.access.directions}
                 </Button>
                 <Button
                   variant="outline"
@@ -107,7 +108,7 @@ const AccessMap = ({ access }: AccessMapProps) => {
                   onClick={() => window.open(access.links.call, '_self')}
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  Appeler
+                  {sections.access.call}
                 </Button>
               </div>
             </Card>
@@ -125,11 +126,11 @@ const AccessMap = ({ access }: AccessMapProps) => {
             <Card className="p-6">
               <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center">
                 <Phone className="w-5 h-5 mr-3 text-primary" />
-                Contact
+                {sections.access.contact}
               </h3>
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm text-muted-foreground">Téléphone</p>
+                  <p className="text-sm text-muted-foreground">{sections.access.phone}</p>
                   <a 
                     href={access.links.call}
                     className="text-lg font-medium text-primary hover:underline"
@@ -138,7 +139,7 @@ const AccessMap = ({ access }: AccessMapProps) => {
                   </a>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Adresse</p>
+                  <p className="text-sm text-muted-foreground">{sections.access.address}</p>
                   <p className="text-foreground">{access.address}</p>
                 </div>
               </div>
@@ -148,12 +149,12 @@ const AccessMap = ({ access }: AccessMapProps) => {
             <Card className="p-6">
               <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center">
                 <Clock className="w-5 h-5 mr-3 text-primary" />
-                Horaires d'ouverture
+                {sections.access.openingHours}
               </h3>
 
               {/* Today's hours highlight */}
               <div className="mb-4 p-3 bg-primary/10 rounded-lg border border-primary/20">
-                <p className="text-sm text-muted-foreground">Aujourd'hui</p>
+                <p className="text-sm text-muted-foreground">{sections.access.today}</p>
                 <p className="text-lg font-semibold text-primary">
                   {todaySchedule.day} : {todaySchedule.hours}
                 </p>

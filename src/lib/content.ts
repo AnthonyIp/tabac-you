@@ -86,9 +86,20 @@ export interface Access {
 
 export interface Footer {
   legal: string;
-  mentions: string;
-  privacy: string;
+  brandName: string;
+  slogan: string;
+  description: string;
   cookieNotice: string;
+  contact: string;
+  phone: string;
+  address: string;
+  usefulLinks: string;
+  googleBusiness: string;
+  directions: string;
+  followInstagram: string;
+  backToTop: string;
+  mapCredits: string;
+  developedBy: string;
 }
 
 export interface SEO {
@@ -98,6 +109,73 @@ export interface SEO {
   ogImage: string;
   url?: string;
   siteName?: string;
+}
+
+export interface Sections {
+  highlights: {
+    title: string;
+    subtitle: string;
+  };
+  services: {
+    title: string;
+    subtitle: string;
+    serviceBadge: string;
+  };
+  reviews: {
+    title: string;
+    subtitle: string;
+    localGuide: string;
+    reviewsCount: string;
+    photosCount: string;
+    viewAllReviews: string;
+  };
+  news: {
+    title: string;
+    subtitle: string;
+    readMore: string;
+  };
+  access: {
+    title: string;
+    subtitle: string;
+    location: string;
+    directions: string;
+    call: string;
+    contact: string;
+    phone: string;
+    address: string;
+    openingHours: string;
+    today: string;
+  };
+  gallery: {
+    title: string;
+    subtitle: string;
+    enlarge: string;
+  };
+}
+
+export interface Navigation {
+  services: string;
+  news: string;
+  gallery: string;
+  access: string;
+  directions: string;
+  call: string;
+  viewDirections: string;
+  callNow: string;
+  theme: string;
+}
+
+export interface Modals {
+  news: {
+    close: string;
+    details: string;
+    interested: string;
+  };
+  legal: {
+    mentions: string;
+    privacy: string;
+    cookies: string;
+  };
 }
 
 export interface ContentData {
@@ -110,6 +188,9 @@ export interface ContentData {
   reviews: Review[];
   access: Access;
   footer: Footer;
+  sections: Sections;
+  navigation: Navigation;
+  modals: Modals;
   seo: SEO;
 }
 
@@ -119,13 +200,6 @@ import contentData from '../../public/data/content.json';
 // Content loader
 export async function loadContent(): Promise<ContentData> {
   try {
-    console.log('✅ Using bundled content data from JSON file');
-    console.log('📊 Data preview:', {
-      brand: contentData.brand?.name,
-      hero: contentData.hero?.title,
-      services: contentData.services?.length,
-      reviews: contentData.reviews?.length
-    });
     return contentData as ContentData;
   } catch (error) {
     console.error('❌ Critical error: Content data not available:', error);

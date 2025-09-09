@@ -27,7 +27,7 @@ const Footer = ({ footer, access }: FooterProps) => {
           size="sm"
           onClick={scrollToTop}
           className="rounded-full w-12 h-12 shadow-glow bg-gradient-primary hover:opacity-90 transition-all duration-300 group"
-          aria-label="Retour en haut"
+          aria-label={footer.backToTop}
         >
           <ArrowUp className="w-5 h-5 group-hover:animate-bounce" />
         </Button>
@@ -48,28 +48,27 @@ const Footer = ({ footer, access }: FooterProps) => {
               <div className="flex items-center space-x-3 mb-4">
                 <div className="text-3xl">🔥</div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground">Les Allumettes</h3>
-                  <p className="text-muted-foreground">Au cœur de Vert-le-Petit</p>
+                  <h3 className="text-xl font-bold text-foreground">{footer.brandName}</h3>
+                  <p className="text-muted-foreground">{footer.slogan}</p>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-4 max-w-md">
-                Votre tabac-presse FDJ de proximité à Vert-le-Petit. 
-                Jeux, presse locale et accueil chaleureux depuis des années au service de notre communauté.
+                {footer.description}
               </p>
               
               {/* Cookie-free Notice */}
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Shield className="w-4 h-4 text-primary" />
-                <span>Site sans cookies - Respect de votre vie privée</span>
+                <span>{footer.cookieNotice}</span>
               </div>
             </div>
 
             {/* Contact Quick */}
             <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">Contact</h4>
+              <h4 className="text-lg font-semibold text-foreground mb-4">{footer.contact}</h4>
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm text-muted-foreground">Téléphone</p>
+                  <p className="text-sm text-muted-foreground">{footer.phone}</p>
                   <a 
                     href={access.links.call}
                     className="text-primary hover:underline font-medium"
@@ -78,7 +77,7 @@ const Footer = ({ footer, access }: FooterProps) => {
                   </a>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Adresse</p>
+                  <p className="text-sm text-muted-foreground">{footer.address}</p>
                   <p className="text-foreground text-sm leading-relaxed">{access.address}</p>
                 </div>
               </div>
@@ -86,7 +85,7 @@ const Footer = ({ footer, access }: FooterProps) => {
 
             {/* Links */}
             <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">Liens utiles</h4>
+              <h4 className="text-lg font-semibold text-foreground mb-4">{footer.usefulLinks}</h4>
               <div className="space-y-3">
                 <Button
                   variant="ghost"
@@ -95,7 +94,7 @@ const Footer = ({ footer, access }: FooterProps) => {
                   onClick={() => window.open(access.links.gmb, '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  Notre fiche Google
+                  {footer.googleBusiness}
                 </Button>
                 <Button
                   variant="ghost"
@@ -104,7 +103,7 @@ const Footer = ({ footer, access }: FooterProps) => {
                   onClick={() => window.open(access.links.directions, '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  Itinéraire
+                  {footer.directions}
                 </Button>
                 <Button
                   variant="ghost"
@@ -113,7 +112,7 @@ const Footer = ({ footer, access }: FooterProps) => {
                   onClick={() => window.open(access.links.instagram, '_blank')}
                 >
                   <Instagram className="w-4 h-4 mr-2" />
-                  Suivez-nous sur Instagram
+                  {footer.followInstagram}
                 </Button>
               </div>
             </div>
@@ -132,12 +131,14 @@ const Footer = ({ footer, access }: FooterProps) => {
                 <p className="text-sm text-muted-foreground">
                   {footer.legal}
                 </p>
-                <p className="text-xs text-muted-foreground/70 mt-1">
-                  Carte : © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">OpenStreetMap</a> contributors
-                </p>
-                <p className="text-xs text-muted-foreground/60 mt-1">
-                  Développé par <a href="https://anthonyip.fr" target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">Anthony Ip</a>
-                </p>
+                <p 
+                  className="text-xs text-muted-foreground/70 mt-1"
+                  dangerouslySetInnerHTML={{ __html: footer.mapCredits }}
+                />
+                <p 
+                  className="text-xs text-muted-foreground/60 mt-1"
+                  dangerouslySetInnerHTML={{ __html: footer.developedBy }}
+                />
               </div>
               
               <div className="flex space-x-6 text-sm">

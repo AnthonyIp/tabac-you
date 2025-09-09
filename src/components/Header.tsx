@@ -4,16 +4,21 @@ import { Menu, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from "./ThemeToggle";
-import type { Brand, Links } from "@/lib/content";
+import { useScrollSpy } from "@/hooks/use-scroll-spy";
+import type { Brand, Links, Navigation } from "@/lib/content";
 
 interface HeaderProps {
   brand: Brand;
   links: Links;
+  navigation: Navigation;
 }
 
-const Header = ({ brand, links }: HeaderProps) => {
+const Header = ({ brand, links, navigation }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Scroll spy for active navigation
+  const activeSection = useScrollSpy(['services', 'news', 'gallery', 'access'], { offset: 100 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +30,10 @@ const Header = ({ brand, links }: HeaderProps) => {
   }, []);
 
   const navItems = [
-    { label: "Services", href: "#services" },
-    { label: "Actualités", href: "#news" },
-    { label: "Galerie", href: "#gallery" },
-    { label: "Accès", href: "#access" }
+    { label: navigation.services, href: "#services" },
+    { label: navigation.news, href: "#news" },
+    { label: navigation.gallery, href: "#gallery" },
+    { label: navigation.access, href: "#access" }
   ];
 
   const scrollToSection = (href: string) => {
@@ -73,22 +78,31 @@ const Header = ({ brand, links }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`relative transition-colors duration-200 font-semibold group px-3 py-2 rounded-md drop-shadow-sm ${
-                  isScrolled 
-                    ? "text-foreground hover:text-foreground/90 hover:bg-foreground/5" 
-                    : "text-white hover:text-white/90 hover:bg-white/10"
-                }`}
-                whileHover={{ y: -2 }}
-                transition={{ duration: 0.2 }}
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-primary group-hover:w-3/4 transition-all duration-300" />
-              </motion.button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <motion.button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`relative transition-colors duration-200 font-semibold group px-3 py-2 rounded-md drop-shadow-sm ${
+                    isScrolled 
+                      ? isActive 
+                        ? "text-primary bg-primary/10" 
+                        : "text-foreground hover:text-foreground/90 hover:bg-foreground/5"
+                      : isActive
+                        ? "text-primary bg-white/20"
+                        : "text-white hover:text-white/90 hover:bg-white/10"
+                  }`}
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {item.label}
+                  <span className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-primary transition-all duration-300 ${
+                    isActive ? "w-3/4" : "w-0 group-hover:w-3/4"
+                  }`} />
+                </motion.button>
+              );
+            })}
           </nav>
 
           {/* Desktop CTAs */}
@@ -101,7 +115,7 @@ const Header = ({ brand, links }: HeaderProps) => {
               onClick={() => window.open(links.directions, '_blank')}
             >
               <MapPin className="w-4 h-4 mr-2" />
-              Itinéraire
+              {navigation.directions}
             </Button>
             <Button
               variant="default"
@@ -110,7 +124,7 @@ const Header = ({ brand, links }: HeaderProps) => {
               onClick={() => window.open(links.call, '_self')}
             >
               <Phone className="w-4 h-4 mr-2" />
-              Appeler
+              {navigation.call}
             </Button>
           </div>
 
@@ -141,7 +155,7 @@ const Header = ({ brand, links }: HeaderProps) => {
                 {/* Mobile CTAs */}
                 <div className="flex flex-col space-y-3 pt-6 border-t border-border">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Thème</span>
+                    <span className="text-sm text-muted-foreground">{navigation.theme}</span>
                     <ThemeToggle />
                   </div>
                   <Button
@@ -153,7 +167,7 @@ const Header = ({ brand, links }: HeaderProps) => {
                     }}
                   >
                     <MapPin className="w-4 h-4 mr-2" />
-                    Voir l'itinéraire
+                    {navigation.viewDirections}
                   </Button>
                   <Button
                     variant="default"
@@ -164,7 +178,7 @@ const Header = ({ brand, links }: HeaderProps) => {
                     }}
                   >
                     <Phone className="w-4 h-4 mr-2" />
-                    Appeler maintenant
+                    {navigation.callNow}
                   </Button>
                 </div>
               </div>

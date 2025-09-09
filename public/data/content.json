@@ -178,7 +178,85 @@
     }
   },
   "footer": {
-    "legal": "© 2025 Les Allumettes - Tous droits réservés"
+    "legal": "© 2025 Les Allumettes - Tous droits réservés",
+    "brandName": "Les Allumettes",
+    "slogan": "Au cœur de Vert-le-Petit",
+    "description": "Votre tabac-presse FDJ de proximité à Vert-le-Petit. Jeux, presse locale et accueil chaleureux depuis des années au service de notre communauté.",
+    "cookieNotice": "Site sans cookies - Respect de votre vie privée",
+    "contact": "Contact",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "usefulLinks": "Liens utiles",
+    "googleBusiness": "Notre fiche Google",
+    "directions": "Itinéraire",
+    "followInstagram": "Suivez-nous sur Instagram",
+    "backToTop": "Retour en haut",
+    "mapCredits": "Carte : © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"hover:text-primary transition-colors\">OpenStreetMap</a> contributors",
+    "developedBy": "Développé par <a href=\"https://anthonyip.fr\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-medium text-primary hover:underline\">Anthony Ip</a>"
+  },
+  "sections": {
+    "highlights": {
+      "title": "Pourquoi choisir Les Allumettes ?",
+      "subtitle": "Découvrez tous les avantages de votre commerce de proximité au cœur de Vert-le-Petit"
+    },
+    "services": {
+      "title": "Nos Services",
+      "subtitle": "Une gamme complète de services pour répondre à tous vos besoins quotidiens",
+      "serviceBadge": "Service"
+    },
+    "reviews": {
+      "title": "Ce que disent nos clients",
+      "subtitle": "Découvrez les témoignages de nos clients fidèles qui font la réputation des Allumettes",
+      "localGuide": "Local Guide",
+      "reviewsCount": "avis",
+      "photosCount": "photos",
+      "viewAllReviews": "Voir tous les avis sur Google"
+    },
+    "news": {
+      "title": "Actualités & Nouveautés",
+      "subtitle": "Restez informé de nos dernières nouveautés et événements spéciaux",
+      "readMore": "Lire la suite"
+    },
+    "access": {
+      "title": "Accès & Horaires",
+      "subtitle": "Trouvez-nous facilement au cœur de Vert-le-Petit, nous vous accueillons tous les jours",
+      "location": "Notre localisation",
+      "directions": "Itinéraire",
+      "call": "Appeler",
+      "contact": "Contact",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "openingHours": "Horaires d'ouverture",
+      "today": "Aujourd'hui"
+    },
+    "gallery": {
+      "title": "Ambiance & Boutique",
+      "subtitle": "Découvrez l'intérieur chaleureux de notre commerce et l'atmosphère conviviale qui vous attend",
+      "enlarge": "Agrandir"
+    }
+  },
+  "navigation": {
+    "services": "Services",
+    "news": "Actualités",
+    "gallery": "Galerie",
+    "access": "Accès",
+    "directions": "Itinéraire",
+    "call": "Appeler",
+    "viewDirections": "Voir l'itinéraire",
+    "callNow": "Appeler maintenant",
+    "theme": "Thème"
+  },
+  "modals": {
+    "news": {
+      "close": "Fermer",
+      "details": "Détails",
+      "interested": "Intéressé(e) ? Passez nous voir au magasin pour en savoir plus !"
+    },
+    "legal": {
+      "mentions": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Politique des cookies"
+    }
   },
   "seo": {
     "title": "Tabac Presse FDJ Les Allumettes - Vert-le-Petit (91710)",
