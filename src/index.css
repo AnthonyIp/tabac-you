@@ -111,5 +111,15 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Prévenir le flash blanc au chargement */
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    transition: background-color 0.1s ease, color 0.1s ease;
+  }
+  
+  /* S'assurer que le thème est appliqué immédiatement */
+  html {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }

@@ -54,14 +54,19 @@
   <body>
     <div id="root"></div>
     <script>
-      // Appliquer le thème sombre par défaut
+      // Appliquer le thème sombre par défaut AVANT le chargement du CSS
       (function() {
         const theme = localStorage.getItem('theme');
-        if (theme && ['light', 'dark'].includes(theme)) {
-          document.documentElement.classList.add(theme);
-        } else {
-          document.documentElement.classList.add('dark');
-        }
+        const finalTheme = (theme && ['light', 'dark'].includes(theme)) ? theme : 'dark';
+        
+        // Appliquer immédiatement la classe
+        document.documentElement.classList.add(finalTheme);
+        
+        // Appliquer les styles de base pour éviter le flash
+        document.documentElement.style.setProperty('--background', finalTheme === 'dark' ? 'hsl(140 30% 4%)' : 'hsl(120 20% 98%)');
+        document.documentElement.style.setProperty('--foreground', finalTheme === 'dark' ? 'hsl(120 15% 95%)' : 'hsl(140 25% 12%)');
+        document.body.style.backgroundColor = `var(--background)`;
+        document.body.style.color = `var(--foreground)`;
       })();
     </script>
     <script type="module" src="/src/main.tsx"></script>

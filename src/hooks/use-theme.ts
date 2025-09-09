@@ -28,6 +28,11 @@ export function useTheme() {
     
     // Sauvegarder le thème
     localStorage.setItem("theme", theme);
+    
+    // Mettre à jour les styles CSS variables pour éviter le flash
+    const isDark = theme === 'dark';
+    root.style.setProperty('--background', isDark ? 'hsl(140 30% 4%)' : 'hsl(120 20% 98%)');
+    root.style.setProperty('--foreground', isDark ? 'hsl(120 15% 95%)' : 'hsl(140 25% 12%)');
   }, [theme, mounted]);
 
   return { theme, setTheme, mounted };

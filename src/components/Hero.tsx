@@ -19,7 +19,7 @@ const Hero = ({ hero }: HeroProps) => {
     }
   };
 
-  const handleCTAClick = (cta: any) => {
+  const handleCTAClick = (cta: { href: string; text: string }) => {
     if (cta.href.startsWith('#')) {
       scrollToSection(cta.href);
     } else {
